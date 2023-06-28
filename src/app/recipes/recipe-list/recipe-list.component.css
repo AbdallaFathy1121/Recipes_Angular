@@ -1,0 +1,13 @@
+
+.recipes-list .card {
+    transition: all .4s;
+}
+
+.recipes-list .card:hover {
+    background-color: #f1f1f1;
+}
+
+.recipes-list .card a {
+    color: black !important;
+    text-decoration: none;
+}
