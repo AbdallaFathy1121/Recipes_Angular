@@ -7,5 +7,15 @@ import { Recipe } from '../recipe.model';
   styleUrls: ['./recipe-detail.component.css']
 })
 export class RecipeDetailComponent {
- @Input() recipe!: Recipe;
+  @Input() recipe!: Recipe;
+  isOpen = false;
+
+
+  onDropdownToggle() {
+    this.isOpen = !this.isOpen; 
+  }
+  toggleClose(){
+    this.isOpen = false;
+  } 
+
 }

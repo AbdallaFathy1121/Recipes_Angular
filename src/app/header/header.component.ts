@@ -8,10 +8,19 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export class HeaderComponent {
   @Output() featureSelected = new EventEmitter<string>();
   active = 'recipe';
+  isOpen = false;
 
   onSelect(feature: string) {
     this.featureSelected.emit(feature);
     this.active = feature;
   }
+
+  onDropdownToggle() {
+    this.isOpen = !this.isOpen;
+  }
+  toggleClose(){
+    this.isOpen = false;
+  } 
+
 
 }
