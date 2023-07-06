@@ -9,7 +9,7 @@ import { ShoppingListService } from './shopping-list.service';
   providers: [ShoppingListService]
 })
 export class ShoppingListComponent implements OnInit {
-  ingredients!: Ingredient[];
+  ingredients: Ingredient[] = [];
 
  
   constructor(private shoppingListService: ShoppingListService) {
@@ -19,10 +19,12 @@ export class ShoppingListComponent implements OnInit {
     this.ingredients = this.shoppingListService.getIngredients();
     this.shoppingListService.ingredientsChanged
       .subscribe(
-        (ingredient: Ingredient[]) => {
-          this.ingredients = ingredient;
+        (ingredients: Ingredient[]) => {
+          this.ingredients = ingredients;
         }
       );
+      console.log(this.ingredients.slice());
   }
 
+  
 }
