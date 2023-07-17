@@ -33,8 +33,12 @@ export class RecipeService {
 
     constructor(private slService: ShoppingListService) {}
 
-    getRecipes() {
+    getRecipes(): Recipe[] {
         return this.recipes.slice();
+    }
+
+    getRecipeById(index: number): Recipe {
+        return this.recipes[index];
     }
 
     addIngredientsToShoppingList(ingredients: Ingredient[]) {

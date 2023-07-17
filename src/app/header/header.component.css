@@ -4,4 +4,9 @@ nav {
 
 nav .active {
     font-weight: bold;
+    background-color: #cccccc45;
+}
+
+nav .nav-item {
+    padding: 10px 0;
 }

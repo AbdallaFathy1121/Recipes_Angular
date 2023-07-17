@@ -6,14 +6,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-  @Output() featureSelected = new EventEmitter<string>();
-  active = 'recipe';
   isOpen = false;
-
-  onSelect(feature: string) {
-    this.featureSelected.emit(feature);
-    this.active = feature;
-  }
 
   onDropdownToggle() {
     this.isOpen = !this.isOpen;
