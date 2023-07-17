@@ -7,6 +7,10 @@
     background-color: #f1f1f1;
 }
 
+.recipes-list .active {
+    background-color: #7070ffc9;
+}
+
 .recipes-list .card a {
     color: black !important;
     text-decoration: none;
