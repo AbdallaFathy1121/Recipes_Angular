@@ -1,7 +1,7 @@
 <div class="shopping-edit">
   <div class="row">
     <div class="col-12">
-      <form (ngSubmit)="onAddItem(f)" #f="ngForm">
+      <form (ngSubmit)="onSubmit(f)" #f="ngForm">
         <div class="row">
           <div class="col-5 form-group">
             <label for="name">Name</label>
@@ -27,9 +27,9 @@
         </div>
         <div class="row">
           <div class="col-12 mt-2">
-            <button class="btn btn-success" type="submit" [disabled]="!f.valid">Add</button>
-            <button class="btn btn-danger" type="button">Delete</button>
-            <button class="btn btn-primary" type="button">Clear</button>
+            <button class="btn btn-success" type="submit" [disabled]="!f.valid">{{ editMode ? 'Update' : 'Add' }}</button>
+            <button class="btn btn-danger" type="button" [disabled]="!editMode" (click)="onDelete()">Delete</button>
+            <button class="btn btn-primary" type="button" (click)="onClear()">Clear</button>
           </div>
         </div>
       </form>
