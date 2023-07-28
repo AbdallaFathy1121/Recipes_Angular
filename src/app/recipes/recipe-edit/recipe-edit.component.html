@@ -1,8 +1,11 @@
 <div class="row">
   <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
     <div class="buttons">
-      <button class="btn btn-success" type="submit">Save</button>
-      <button class="btn btn-danger" type="button">Cancel</button>
+      <button 
+        class="btn btn-success" 
+        type="submit"
+        [disabled]="!recipeForm.valid">Save</button>
+      <button class="btn btn-danger" type="button" (click)="onCancel()">Cancel</button>
     </div>
     <div class="form-group">
       <label for="name">Name</label>
@@ -11,6 +14,10 @@
         id="name" 
         class="form-control"
         formControlName="name">
+        <span 
+          class="text-danger"
+          *ngIf="!recipeForm.get('name')?.valid && recipeForm.get('name')?.touched">This Field is Required!
+        </span>
     </div>
     <div class="form-group">
       <label for="imagePath">Image URL</label>
@@ -19,6 +26,10 @@
         id="imagePath" 
         class="form-control"
         formControlName="imagePath">
+      <span 
+        class="text-danger"
+        *ngIf="!recipeForm.get('imagePath')?.valid && recipeForm.get('imagePath')?.touched">This Field is Required!
+      </span>
     </div>
     <div class="img-box">
       <img src="" class="img-responsive">
@@ -30,6 +41,10 @@
         class="form-control"
         rows="6"
         formControlName="description"></textarea>
+      <span 
+        class="text-danger"
+        *ngIf="!recipeForm.get('description')?.valid && recipeForm.get('description')?.touched">This Field is Required!
+      </span>
     </div>
     <div class="form-group" formArrayName="ingredients">
       <div class="row mb-2" *ngFor="let ingredientControl of ingredientControls; let i = index" [formGroupName]="i">
@@ -38,12 +53,20 @@
             type="text"
             class="form-control"
             formControlName="name">
+          <span 
+            class="text-danger"
+            *ngIf="!ingredientControl.get('name')?.valid && ingredientControl.get('name')?.touched">This Field is Required!
+          </span>
         </div>
         <div class="col-2">
           <input 
             type="number"
             class="form-control"
             formControlName="amount">
+          <span 
+            class="text-danger"
+            *ngIf="!ingredientControl.get('amount')?.valid && ingredientControl.get('amount')?.touched">This Field is Required!
+          </span>
         </div>
         <div class="col-2">
           <button class="btn btn-danger" type="button">X</button>
