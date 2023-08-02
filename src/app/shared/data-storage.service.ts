@@ -12,12 +12,12 @@ export class DataStorageService {
     storeRecipes() {
         const recipes = this.recipeService.getRecipes();
         this.http
-            .put(
+            .put<Recipe[]>(
                 'https://recipe-app-3590f-default-rtdb.firebaseio.com/recipes.json',
                 recipes
             )
-            .subscribe(response => {
-                console.log(response);
+            .subscribe(recipes => {
+                console.log(recipes);
             });
     }
 

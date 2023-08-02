@@ -17,9 +17,10 @@ import { ShoppingListService } from './shopping-list/shopping-list.service';
 import { AppRoutingModule } from './app-routing.module';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 import { DataStorageService } from './shared/data-storage.service';
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
-  declarations: [			
+  declarations: [				
     AppComponent,
     HeaderComponent,
     RecipesComponent,
@@ -29,7 +30,8 @@ import { DataStorageService } from './shared/data-storage.service';
     ShoppingListComponent,
     ShoppingEditComponent,
     RecipeEditComponent,
-    DropdownDirective
+    DropdownDirective,
+    AuthComponent
    ],
   imports: [
     BrowserModule,
