@@ -7,23 +7,27 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" style="cursor: pointer;" routerLink="/recipes">Recipes</a>
+          <a class="nav-link" style="cursor: pointer;" routerLink="/recipes" *ngIf="isAuthenticated">Recipes</a>
         </li>
         <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" style="cursor: pointer;" routerLink="/shopping-list">Shopping List</a>
+          <a class="nav-link" style="cursor: pointer;" routerLink="/shopping-list" *ngIf="isAuthenticated">Shopping List</a>
         </li>
         <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" style="cursor: pointer;" routerLink="/auth">Authenticate</a>
+          <a class="nav-link" style="cursor: pointer;" routerLink="/auth" *ngIf="!isAuthenticated">Authenticate</a>
         </li>
       </ul>
       <ul class="navbar-nav" (mouseleave)="toggleClose()">
+
         <li class="nav-item dropdown" >
           <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" (click)="onDropdownToggle()">
             Manage
           </a>
           <ul class="dropdown-menu" [ngClass]="{'d-block': isOpen === true}">
-            <li><a class="dropdown-item" (click)="onSaveData()">Save Data</a></li>
-            <li><a class="dropdown-item" (click)="onFetchData()">Fetch Data</a></li>
+            <li *ngIf="isAuthenticated">
+              <a class="dropdown-item" style="cursor: pointer;">Logout</a>
+            </li>
+            <li *ngIf="!isAuthenticated"><a class="dropdown-item" (click)="onSaveData()">Save Data</a></li>
+            <li *ngIf="!isAuthenticated"><a class="dropdown-item" (click)="onFetchData()">Fetch Data</a></li>
           </ul>
         </li>
       </ul>
