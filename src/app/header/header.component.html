@@ -16,18 +16,17 @@
           <a class="nav-link" style="cursor: pointer;" routerLink="/auth" *ngIf="!isAuthenticated">Authenticate</a>
         </li>
       </ul>
-      <ul class="navbar-nav" (mouseleave)="toggleClose()">
-
+      <ul class="navbar-nav" *ngIf="isAuthenticated" (mouseleave)="toggleClose()">
+        <li class="nav-item" >
+          <a class="nav-link" style="cursor: pointer;" (click)="onLogout()">Logout</a>
+        </li>
         <li class="nav-item dropdown" >
           <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" (click)="onDropdownToggle()">
             Manage
           </a>
           <ul class="dropdown-menu" [ngClass]="{'d-block': isOpen === true}">
-            <li *ngIf="isAuthenticated">
-              <a class="dropdown-item" style="cursor: pointer;">Logout</a>
-            </li>
-            <li *ngIf="!isAuthenticated"><a class="dropdown-item" (click)="onSaveData()">Save Data</a></li>
-            <li *ngIf="!isAuthenticated"><a class="dropdown-item" (click)="onFetchData()">Fetch Data</a></li>
+            <li><a class="dropdown-item" (click)="onSaveData()">Save Data</a></li>
+            <li><a class="dropdown-item" (click)="onFetchData()">Fetch Data</a></li>
           </ul>
         </li>
       </ul>
